@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evelyn's GIFT BASKETS - Catálogo Digital</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            500: '#e11d48',
+                            600: '#be123c',
+                            700: '#9f1239',
+                            dark: '#2c1820'
+                        },
+                        whatsapp: '#25D366',
+                        'whatsapp-dark': '#128C7E'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fcf8f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.25s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-rose-200">
+
+    <!-- Container Principal do App Mobile / Web -->
+    <div class="max-w-md mx-auto min-h-screen bg-white shadow-2xl relative flex flex-col pb-12">
+        
+        <!-- Header Fixo -->
+        <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-rose-100 px-4 py-3 shadow-sm">
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-lg shadow-inner shrink-0">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-serif font-bold text-base text-gray-900 leading-tight">Evelyn's <span class="text-rose-600">GIFT BASKETS</span></h1>
+                        <p class="text-[10px] text-gray-500 italic">Arte em forma de presente</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <button onclick="toggleEditModal()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-semibold px-2.5 py-2 rounded-full flex items-center gap-1 shadow-xs transition-transform active:scale-95" title="Editar Legendas e Fotos">
+                        <i class="fa-solid fa-pen-to-square text-xs"></i>
+                        <span class="hidden sm:inline">Gerenciar</span>
+                    </button>
+                    <a href="https://wa.me/19098198684?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20as%20cestas." 
+                       target="_blank" 
+                       class="bg-whatsapp hover:bg-whatsapp-dark text-white text-xs font-semibold px-3 py-2 rounded-full flex items-center gap-1.5 shadow-md transition-transform active:scale-95">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>Contato</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero / Boas-Vindas -->
+        <section class="bg-gradient-to-b from-rose-50 via-rose-50/40 to-white px-5 pt-5 pb-4 text-center border-b border-rose-100/60">
+            <span class="inline-block bg-rose-100 text-rose-700 text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider mb-2">
+                Catálogo Oficial
+            </span>
+            <h2 class="font-serif text-2xl font-bold text-gray-900 mb-1.5">
+                Presentes Únicos e Personalizados
+            </h2>
+            <p class="text-xs text-gray-600 leading-relaxed max-w-xs mx-auto">
+                Criações cuidadosamente elaboradas para transformar momentos especiais em lembranças inesquecíveis.
+            </p>
+            
+            <!-- Barra de Busca e Botão de Filtros -->
+            <div class="mt-4 flex items-center gap-2 max-w-xs mx-auto">
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                    <input type="text" 
+                           id="searchInput" 
+                           onkeyup="filterProducts()" 
+                           placeholder="Buscar cesta, flor, bebê..." 
+                           class="w-full pl-9 pr-3 py-2 text-xs bg-white border border-rose-200 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all">
+                </div>
+                <button onclick="toggleFilterModal()" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold px-3.5 py-2 rounded-full flex items-center gap-1.5 shadow-sm shrink-0 transition-transform active:scale-95">
+                    <i class="fa-solid fa-sliders text-xs"></i>
+                    <span>Filtros</span>
+                    <span id="activeFilterBadge" class="hidden bg-white text-rose-600 text-[10px] w-4 h-4 rounded-full font-bold flex items-center justify-center ml-0.5">!</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Filtro por Categorias (Scroll Horizontal) -->
+        <section class="py-2.5 px-4 border-b border-gray-100 bg-white sticky top-[57px] z-20 shadow-xs">
+            <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar text-xs font-medium py-1" id="categoryContainer">
+                <button onclick="setCategory('all', this)" data-cat="all" class="cat-btn bg-rose-600 text-white px-3 py-1.5 rounded-full whitespace-nowrap shadow-xs transition-all">
+                    Todos <span class="text-[10px] opacity-80" id="count-all"></span>
+                </button>
+                <button onclick="setCategory('halloween', this)" data-cat="halloween" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    🎃 Halloween <span class="text-[10px] opacity-70" id="count-halloween"></span>
+                </button>
+                <button onclick="setCategory('cafe', this)" data-cat="cafe" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    ☕ Café & Gourmet <span class="text-[10px] opacity-70" id="count-cafe"></span>
+                </button>
+                <button onclick="setCategory('vinho', this)" data-cat="vinho" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    🍷 Vinhos & Queijos <span class="text-[10px] opacity-70" id="count-vinho"></span>
+                </button>
+                <button onclick="setCategory('buques', this)" data-cat="buques" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    🌹 Buquês & Arranjos <span class="text-[10px] opacity-70" id="count-buques"></span>
+                </button>
+                <button onclick="setCategory('centros', this)" data-cat="centros" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    👑 Centros de Mesa <span class="text-[10px] opacity-70" id="count-centros"></span>
+                </button>
+                <button onclick="setCategory('infantil', this)" data-cat="infantil" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    👶 Bebê & Infantil <span class="text-[10px] opacity-70" id="count-infantil"></span>
+                </button>
+                <button onclick="setCategory('spa', this)" data-cat="spa" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    🛁 Spa & Wellness <span class="text-[10px] opacity-70" id="count-spa"></span>
+                </button>
+                <button onclick="setCategory('personalizados', this)" data-cat="personalizados" class="cat-btn bg-gray-100 text-gray-600 hover:bg-rose-50 px-3 py-1.5 rounded-full whitespace-nowrap transition-all">
+                    🎁 Personalizados <span class="text-[10px] opacity-70" id="count-personalizados"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Conteúdo Principal de Produtos -->
+        <main class="p-4 flex-1">
+            <div class="grid grid-cols-2 gap-3" id="productGrid">
+                <!-- Produtos renderizados dinamicamente via JS -->
+            </div>
+            
+            <div id="noResults" class="hidden text-center py-12">
+                <i class="fa-regular fa-face-frown text-3xl text-gray-300 mb-2"></i>
+                <p class="text-sm font-medium text-gray-500">Nenhum presente encontrado.</p>
+                <button onclick="resetFilters()" class="mt-2 text-xs text-rose-600 underline font-semibold">Ver todos os produtos</button>
+            </div>
+        </main>
+
+        <!-- Seção: Crie um Presente Único -->
+        <section class="mx-4 my-4 p-5 bg-gradient-to-br from-rose-50 to-rose-100/60 rounded-2xl border border-rose-200 text-center">
+            <div class="w-10 h-10 mx-auto rounded-full bg-rose-600 text-white flex items-center justify-center text-lg mb-2 shadow-sm">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="font-serif font-bold text-gray-900 text-base mb-1">Crie um Presente Único</h3>
+            <p class="text-xs text-gray-600 mb-4 leading-relaxed">
+                Além dos modelos deste catálogo, criamos cestas e arranjos personalizados sob encomenda. Você escolhe a ocasião, tema e estilo — nós cuidamos de cada detalhe!
+            </p>
+            <a href="https://wa.me/19098198684?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20presente%20personalizado." 
+               target="_blank" 
+               class="inline-flex items-center justify-center gap-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition-all active:scale-95">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Solicitar Orçamento Personalizado</span>
+            </a>
+        </section>
+
+        <!-- Rodapé -->
+        <footer class="bg-rose-950 text-white px-5 py-6 mt-auto text-center">
+            <h3 class="font-serif font-bold text-base text-rose-200 mb-1">Evelyn's GIFT BASKETS</h3>
+            <p class="text-[11px] text-rose-200/80 mb-4">Cestas • Buquês • Arranjos • Centros de Mesa • Presentes Personalizados</p>
+            
+            <div class="border-t border-rose-900/60 pt-4 text-xs text-rose-300/80 space-y-1">
+                <p><i class="fa-brands fa-whatsapp text-rose-400 mr-1.5"></i> (909) 819-8684</p>
+                <p class="text-[10px] text-rose-400/60 mt-2">© Evelyn's Gift Baskets. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+
+        <!-- Toast de Notificação -->
+        <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900/90 text-white text-xs px-4 py-2.5 rounded-full shadow-lg backdrop-blur-xs flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4">
+            <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span id="toastMessage">Alterações salvas!</span>
+        </div>
+
+    </div>
+
+    <!-- Modal de Seleção de Filtros & Ordenação -->
+    <div id="filterModal" class="fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 hidden backdrop-blur-xs transition-all">
+        <div class="bg-white rounded-t-3xl sm:rounded-2xl max-w-md w-full max-h-[85vh] flex flex-col shadow-2xl border border-rose-100 overflow-hidden animate-slide-up">
+            <div class="p-4 border-b border-rose-100 flex items-center justify-between bg-rose-50/80">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-filter"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-gray-900 text-base">Filtrar e Ordenar</h3>
+                </div>
+                <button onclick="toggleFilterModal()" class="text-gray-400 hover:text-gray-600 w-8 h-8 flex items-center justify-center rounded-full hover:bg-rose-100/50">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+
+            <div class="p-4 overflow-y-auto space-y-5 flex-1">
+                <!-- Seção 1: Ordenação -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2.5">Ordenar Por</h4>
+                    <div class="grid grid-cols-3 gap-2 text-xs">
+                        <button onclick="setSortOption('default')" id="sort-default" class="sort-btn p-2.5 rounded-xl border border-rose-200 text-rose-700 bg-rose-50 font-semibold text-left flex items-center justify-between">
+                            <span>Destaques</span>
+                            <i class="fa-solid fa-circle-check text-rose-600"></i>
+                        </button>
+                        <button onclick="setSortOption('az')" id="sort-az" class="sort-btn p-2.5 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 text-left flex items-center justify-between">
+                            <span>Nome (A - Z)</span>
+                            <i class="fa-solid fa-arrow-down-a-z text-gray-400"></i>
+                        </button>
+                        <button onclick="setSortOption('za')" id="sort-za" class="sort-btn p-2.5 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 text-left flex items-center justify-between">
+                            <span>Nome (Z - A)</span>
+                            <i class="fa-solid fa-arrow-up-z-a text-gray-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Seção 2: Categoria -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2.5">Selecione a Categoria</h4>
+                    <div class="grid grid-cols-1 gap-1.5 text-xs" id="filterModalCategories">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rodapé do Modal -->
+            <div class="p-3 border-t border-gray-100 bg-gray-50 flex items-center gap-2">
+                <button onclick="resetFilters()" class="w-1/3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 rounded-xl text-xs transition-colors">
+                    Limpar
+                </button>
+                <button onclick="toggleFilterModal()" class="w-2/3 bg-rose-600 hover:bg-rose-700 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition-all active:scale-95">
+                    Aplicar Filtros
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edição de Legendas e Gerenciamento do Catálogo -->
+    <div id="editModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl border border-rose-100 overflow-hidden">
+            <div class="p-4 border-b border-rose-100 flex items-center justify-between bg-rose-50/80">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-rose-600 text-lg"></i>
+                    <div>
+                        <h3 class="font-serif font-bold text-gray-900 text-sm">Gerenciador do Catálogo</h3>
+                        <p class="text-[10px] text-gray-500">Altere a legenda, título, preço e foto</p>
+                    </div>
+                </div>
+                <button onclick="toggleEditModal()" class="text-gray-400 hover:text-gray-600 w-8 h-8 flex items-center justify-center rounded-full hover:bg-rose-100/50">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+            
+            <div class="p-3 bg-rose-50/70 border-b border-rose-100 text-[11px] text-rose-800 leading-tight">
+                <i class="fa-solid fa-lightbulb text-rose-600 mr-1"></i>
+                Clique em qualquer produto abaixo para editar a legenda, nome ou trocar a foto. Suas alterações ficam salvas automaticamente!
+            </div>
+
+            <!-- Lista para seleção de qual produto editar -->
+            <div id="editProductList" class="p-4 overflow-y-auto space-y-3 flex-1">
+                <!-- Gerado via JS -->
+            </div>
+
+            <!-- Form de Edição individual de um Produto -->
+            <div id="editFormContainer" class="p-4 overflow-y-auto space-y-3 flex-1 hidden">
+                <button onclick="closeEditForm()" class="text-xs text-rose-600 font-bold flex items-center gap-1 mb-2 hover:underline">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar para a lista
+                </button>
+                <form id="editProductForm" onsubmit="saveProductChanges(event)">
+                    <input type="hidden" id="editProdId">
+                    
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-1">Título do Presente</label>
+                            <input type="text" id="editProdTitle" required class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-1">Legenda / Descrição Detalhada</label>
+                            <textarea id="editProdDesc" rows="4" required class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none text-xs leading-relaxed" placeholder="Escreva a descrição e componentes do presente..."></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block font-bold text-gray-700 mb-1">Preço / Valor</label>
+                                <input type="text" id="editProdPrice" required class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none" placeholder="Ex: Sob Consulta ou R$ 180,00">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-gray-700 mb-1">Categoria</label>
+                                <select id="editProdCategory" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none bg-white">
+                                    <option value="halloween">🎃 Halloween</option>
+                                    <option value="cafe">☕ Café & Gourmet</option>
+                                    <option value="vinho">🍷 Vinhos & Queijos</option>
+                                    <option value="buques">🌹 Buquês & Arranjos</option>
+                                    <option value="centros">👑 Centros de Mesa</option>
+                                    <option value="infantil">👶 Bebê & Infantil</option>
+                                    <option value="spa">🛁 Spa & Wellness</option>
+                                    <option value="personalizados">🎁 Personalizados</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-1">Imagem do Produto</label>
+                            <div class="flex items-center gap-2 mb-2">
+                                <img id="editProdPreview" src="" class="w-12 h-12 object-cover rounded-lg border border-gray-200">
+                                <label class="cursor-pointer bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-semibold px-3 py-2 rounded-lg flex items-center gap-1.5 shrink-0">
+                                    <i class="fa-solid fa-upload"></i> Escolher da Galeria
+                                    <input type="file" accept="image/*" class="hidden" onchange="previewUploadedImage(this)">
+                                </label>
+                            </div>
+                            <input type="url" id="editProdImage" placeholder="Ou cole a URL da imagem aqui..." class="w-full p-2 text-[11px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none" onchange="document.getElementById('editProdPreview').src = this.value">
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex gap-2">
+                        <button type="button" onclick="closeEditForm()" class="w-1/3 bg-gray-200 text-gray-700 font-semibold py-2 rounded-xl text-xs">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="w-2/3 bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-xl text-xs shadow-md">
+                            <i class="fa-solid fa-floppy-disk mr-1"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="p-3 border-t border-gray-100 bg-gray-50 flex items-center justify-between text-xs gap-2 flex-wrap">
+                <div class="flex items-center gap-1.5">
+                    <button onclick="exportBackup()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-2.5 py-1.5 rounded-lg text-[11px] flex items-center gap-1 shadow-xs transition-transform active:scale-95" title="Baixar arquivo de backup">
+                        <i class="fa-solid fa-download"></i> Salvar / Baixar
+                    </button>
+                    <label class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-2.5 py-1.5 rounded-lg text-[11px] flex items-center gap-1 shadow-xs transition-transform active:scale-95 cursor-pointer" title="Carregar arquivo de backup">
+                        <i class="fa-solid fa-upload"></i> Carregar
+                        <input type="file" accept=".json" class="hidden" onchange="importBackupFile(event)">
+                    </label>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="resetAllProducts()" class="text-rose-600 hover:underline text-[11px] font-medium">
+                        Restaurar
+                    </button>
+                    <button onclick="toggleEditModal()" class="bg-rose-600 text-white font-semibold px-3 py-1.5 rounded-lg text-[11px]">
+                        Concluído
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const phone = "19098198684";
+
+        const categoryInfo = {
+            all: { name: "Todos os Produtos", icon: "fa-border-all" },
+            halloween: { name: "🎃 Halloween", icon: "fa-ghost" },
+            cafe: { name: "☕ Café & Gourmet", icon: "fa-mug-hot" },
+            vinho: { name: "🍷 Vinhos & Queijos", icon: "fa-wine-glass" },
+            buques: { name: "🌹 Buquês & Arranjos", icon: "fa-spa" },
+            centros: { name: "👑 Centros de Mesa", icon: "fa-crown" },
+            infantil: { name: "👶 Bebê & Infantil", icon: "fa-baby" },
+            spa: { name: "🛁 Spa & Wellness", icon: "fa-pump-soap" },
+            personalizados: { name: "🎁 Personalizados", icon: "fa-gift" }
+        };
+
+        const defaultProducts = [
+            {
+                id: 101,
+                title: "Cesta Temática Halloween - Cozy Pumpkin & Boo Treat",
+                category: "halloween",
+                price: "Sob Consulta",
+                desc: "Linda cesta de tricô/palha laranja recheada com pelúcia de abóbora, mini fantasma, caneca térmica de café com estampa outonal, chocolates Reese's, arranjo de flor dark e tag artesanal 'Happy Halloween'. Embalada com laço especial.",
+                image: "https://placehold.co/600x600/ea580c/ffffff?text=Cesta+Cozy+Pumpkin+%26+Boo"
+            },
+            {
+                id: 1,
+                title: "Centro de Mesa Temático Halloween",
+                category: "centros",
+                price: "Sob Consulta",
+                desc: "Arranjo de mesa decorativo com balões temáticos (caveira Jack, balão estrela e balão aranha) e potes recheados de doces.",
+                image: "https://placehold.co/600x600/2c1820/ffffff?text=Centro+Mesa+Halloween"
+            },
+            {
+                id: 2,
+                title: "Centro de Mesa Temático Princesa",
+                category: "centros",
+                price: "Sob Consulta",
+                desc: "Elegante centro de mesa em formato de silhueta de princesa com vestido em tule azul, coroa e arranjo de rosas.",
+                image: "https://placehold.co/600x600/1e3a8a/ffffff?text=Centro+Mesa+Princesa"
+            },
+            {
+                id: 3,
+                title: "Coleção Halloween - Mimos Laço Laranja",
+                category: "halloween",
+                price: "Sob Consulta",
+                desc: "Lembrancinhas e mimos individuais temáticos de Halloween em acrílico com pelúcias (abóbora, fantasma, gatinho), chocolates Reese's, Hershey's, KitKat e laços elegantes.",
+                image: "https://placehold.co/600x600/f97316/ffffff?text=Mimos+Halloween"
+            },
+            {
+                id: 4,
+                title: "Cesta Temática Halloween - You're My Boo",
+                category: "halloween",
+                price: "Sob Consulta",
+                desc: "Cesta no balde de abóbora com pelúcia Ghost 'You're My Boo', copo temático com canudo, meias divertidas e acessórios de Halloween.",
+                image: "https://placehold.co/600x600/f97316/ffffff?text=Cesta+You+Are+My+Boo"
+            },
+            {
+                id: 5,
+                title: "Cesta Temática Halloween - Purple Bat",
+                category: "halloween",
+                price: "Sob Consulta",
+                desc: "Cesta temática em caldeirão com pelúcia de morcego roxo, caneca fantasma recheada de guloseimas, rosa e balão BOO!",
+                image: "https://placehold.co/600x600/7e22ce/ffffff?text=Cesta+Purple+Bat"
+            },
+            {
+                id: 6,
+                title: "Cesta Temática Halloween - Hocus Pocus Witch",
+                category: "halloween",
+                price: "Sob Consulta",
+                desc: "Caldeirão divertido com bruxinha de pelúcia, copo 'Hocus Pocus', pacote de doces Fun Dip, confeitos e enfeite de fantasma.",
+                image: "https://placehold.co/600x600/581c87/ffffff?text=Cesta+Hocus+Pocus"
+            },
+            {
+                id: 7,
+                title: "Buquê Temático Halloween - Rosas Dark & Boo",
+                category: "halloween",
+                price: "Sob Consulta",
+                desc: "Buquê elegante com rosas em tom violeta escuro, pelúcia temática de Halloween e balão informativo 'BOO!'.",
+                image: "https://placehold.co/600x600/312e81/ffffff?text=Buque+Rosas+Halloween"
+            },
+            {
+                id: 8,
+                title: "Buquê Temático Halloween - Pumpkin Treat",
+                category: "halloween",
+                price: "Sob Consulta",
+                desc: "Arranjo festivo com guloseimas, abóbora decorativa e topo temático de Halloween.",
+                image: "https://placehold.co/600x600/c2410c/ffffff?text=Buque+Pumpkin+Treat"
+            },
+            {
+                id: 9,
+                title: "Cesta de Café da Manhã Aniversário",
+                category: "cafe",
+                price: "Sob Consulta",
+                desc: "Bandeja em madeira com balão Bubble 'Happy Birthday', waffles crocantes, croissants, suco Natural One, uvas, morangos frescos e chocolates Ferrero Rocher.",
+                image: "https://placehold.co/600x600/be123c/ffffff?text=Cafe+Aniversario"
+            },
+            {
+                id: 10,
+                title: "Cesta de Café da Manhã Personalizada Gourmet",
+                category: "cafe",
+                price: "Sob Consulta",
+                desc: "Caixa em madeira gourmet com suco, croissant recheado, pães de queijo, frios fatiados, fruta fresca, geleia e chocolates selecionados.",
+                image: "https://placehold.co/600x600/991b1b/ffffff?text=Cafe+Gourmet"
+            },
+            {
+                id: 11,
+                title: "Kit Romântico Cesta Personalizada",
+                category: "cafe",
+                price: "Sob Consulta",
+                desc: "Cesta de madeira rústica com caneca personalizada, mini varal de luzes/cordão para foto polaroid do casal, café gourmet e biscoitos artesanais.",
+                image: "https://placehold.co/600x600/881337/ffffff?text=Kit+Romantico+Polaroid"
+            },
+            {
+                id: 12,
+                title: "Buquê Personalizado Angel / Stitch Pink",
+                category: "buques",
+                price: "Sob Consulta",
+                desc: "Buquê luxuoso em embalagem rosa e dourada com pelúcia do Stitch Pink, maquiagens selecionadas e arranjo floral.",
+                image: "https://placehold.co/600x600/f43f5e/ffffff?text=Buque+Angel+Pink"
+            },
+            {
+                id: 13,
+                title: "Buquê de Flores com Pelúcia Vaquinha",
+                category: "buques",
+                price: "Sob Consulta",
+                desc: "Delicado buquê de rosas brancas naturais com gipsofilas (mosquitinho) e uma fofa pelúcia de vaquinha.",
+                image: "https://placehold.co/600x600/e2e8f0/1e293b?text=Buque+Rosas+Vaquinha"
+            },
+            {
+                id: 14,
+                title: "Arranjo Floral Especial Caneca Rosa",
+                category: "buques",
+                price: "Sob Consulta",
+                desc: "Caneca de porcelana rosa com arranjo delicado de flores, bombons Ferrero Rocher e balão metalizado em coração 'Feliz Dia'.",
+                image: "https://placehold.co/600x600/fb7185/ffffff?text=Arranjo+Caneca+Rosa"
+            },
+            {
+                id: 15,
+                title: "Box Especial Rosas Vermelhas & Perfume",
+                category: "buques",
+                price: "Sob Consulta",
+                desc: "Caixa Box cilíndrica branca 'The Best FOR YOU' com rosas de cetim vermelhas, borboleta dourada e perfume de linha fina.",
+                image: "https://placehold.co/600x600/b91c1c/ffffff?text=Box+Rosas+e+Perfume"
+            },
+            {
+                id: 16,
+                title: "Box Coração Rosas Vermelhas & Ferrero",
+                category: "buques",
+                price: "Sob Consulta",
+                desc: "Caixa em formato de coração vermelha recheada com rosas vermelhas selecionadas e bombons Ferrero Rocher com laço de cetim.",
+                image: "https://placehold.co/600x600/9f1239/ffffff?text=Box+Coracao+Ferrero"
+            },
+            {
+                id: 17,
+                title: "Cesta Personalizada Infantil Stitch Blue",
+                category: "infantil",
+                price: "Sob Consulta",
+                desc: "Cesta redonda com nome personalizado, temática Stitch, balão de coração metalizado, doces, biscoitos e guloseimas.",
+                image: "https://placehold.co/600x600/0284c7/ffffff?text=Cesta+Infantil+Stitch"
+            },
+            {
+                id: 18,
+                title: "Cesta Personalizada Infantil Thomas",
+                category: "infantil",
+                price: "Sob Consulta",
+                desc: "Caixote de madeira com balão personalizado com o nome da criança, urso de pelúcia com naninha, suco, Nutella e comidinhas infantis.",
+                image: "https://placehold.co/600x600/0369a1/ffffff?text=Cesta+Infantil+Thomas"
+            },
+            {
+                id: 19,
+                title: "Presente Personalizado Bebê",
+                category: "infantil",
+                price: "Sob Consulta",
+                desc: "Caixa circular personalizada com nome do bebê, balão transparente Bubble 'Bem-vindo', ursinho de pelúcia/amigurumi e kit de produtos de higiene infantil.",
+                image: "https://placehold.co/600x600/38bdf8/ffffff?text=Presente+Bebe"
+            },
+            {
+                id: 20,
+                title: "Cesta Spa Brazilian Orchid Care",
+                category: "spa",
+                price: "Sob Consulta",
+                desc: "Cesta peluciada roxa com orelhas e asas de morcego contendo linha completa de cuidados corporais (manteiga corporal Brazilian Orchid, loções e esfoliantes).",
+                image: "https://placehold.co/600x600/a21caf/ffffff?text=Cesta+Spa+Brazilian+Orchid"
+            },
+            {
+                id: 21,
+                title: "Cesta Vinho Cabernet & Tábua de Queijos",
+                category: "vinho",
+                price: "Sob Consulta",
+                desc: "Bandeja rústica de madeira nobre com vinho Cabernet Sauvignon selecionado, variedade de queijos finos, geleia artesanal, castanhas e torradas gourmet.",
+                image: "https://placehold.co/600x600/4c0519/ffffff?text=Cesta+Vinho+e+Queijos"
+            },
+            {
+                id: 22,
+                title: "Box Acrílico Luxo Rosas & Macarons",
+                category: "buques",
+                price: "Sob Consulta",
+                desc: "Caixa em acrílico cristal com compartimento para rosas naturais preservadas e gaveta inferior recheada de macarons franceses sortidos.",
+                image: "https://placehold.co/600x600/f43f5e/ffffff?text=Box+Rosas+e+Macarons"
+            },
+            {
+                id: 23,
+                title: "Cesta Spa Lavender Relax & Self-Care",
+                category: "spa",
+                price: "Sob Consulta",
+                desc: "Kit completo relaxante com velas aromáticas de alfazema, sabonete líquido artesanal, esponja macia, sais de banho e toalha bordada.",
+                image: "https://placehold.co/600x600/7e22ce/ffffff?text=Cesta+Spa+Lavender"
+            },
+            {
+                id: 24,
+                title: "Cesta Chocólatra Supreme (Lindt & Ferrero)",
+                category: "cafe",
+                price: "Sob Consulta",
+                desc: "O presente perfeito para amantes de chocolate: combinação de bombons Lindt Lindor, Ferrero Rocher, barras gourmet e trufas selecionadas.",
+                image: "https://placehold.co/600x600/78350f/ffffff?text=Cesta+Chocolates+Supreme"
+            }
+        ];
+
+        let products = [];
+        let currentCategory = 'all';
+        let currentSort = 'default';
+
+        // Carregar produtos customizados do localStorage ou usar padrão
+        function loadProducts() {
+            try {
+                const saved = localStorage.getItem('evelyns_custom_products_v2');
+                if (saved) {
+                    products = JSON.parse(saved);
+                } else {
+                    products = JSON.parse(JSON.stringify(defaultProducts));
+                }
+            } catch (e) {
+                console.error("Erro ao carregar do localStorage:", e);
+                products = JSON.parse(JSON.stringify(defaultProducts));
+            }
+        }
+
+        // Salvar estado atual no localStorage
+        function saveProductsToStorage() {
+            try {
+                localStorage.setItem('evelyns_custom_products_v2', JSON.stringify(products));
+                showToast("Alterações salvas no navegador!", "fa-circle-check", "text-emerald-400");
+            } catch (e) {
+                console.error("Erro ao salvar no localStorage:", e);
+                showToast("Aviso: Espaço local cheio ou restrito.", "fa-triangle-exclamation", "text-amber-400");
+            }
+        }
+
+        function showToast(message, icon = "fa-circle-check", iconColor = "text-emerald-400") {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            if (!toast || !toastMsg) return;
+
+            toastMsg.textContent = message;
+            if (toastIcon) {
+                toastIcon.className = `fa-solid ${icon} ${iconColor}`;
+            }
+
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            }, 3000);
+        }
+
+        function exportBackup() {
+            try {
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(products, null, 2));
+                const downloadAnchor = document.createElement('a');
+                downloadAnchor.setAttribute("href", dataStr);
+                downloadAnchor.setAttribute("download", `evelyns_catalogo_backup_${new Date().toISOString().slice(0,10)}.json`);
+                document.body.appendChild(downloadAnchor);
+                downloadAnchor.click();
+                downloadAnchor.remove();
+                showToast("Backup baixado com sucesso!", "fa-circle-down", "text-emerald-400");
+            } catch (e) {
+                console.error("Erro ao exportar backup:", e);
+                showToast("Erro ao gerar backup.", "fa-circle-xmark", "text-rose-400");
+            }
+        }
+
+        function importBackupFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    if (Array.isArray(importedData) && importedData.length > 0) {
+                        products = importedData;
+                        saveProductsToStorage();
+                        updateCategoryCounts();
+                        filterProducts();
+                        renderEditProductList();
+                        showToast("Catálogo restaurado do arquivo!", "fa-file-import", "text-emerald-400");
+                    } else {
+                        showToast("Arquivo de backup inválido.", "fa-circle-xmark", "text-rose-400");
+                    }
+                } catch (err) {
+                    console.error("Erro ao importar backup:", err);
+                    showToast("Formato de arquivo inválido.", "fa-circle-xmark", "text-rose-400");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Renderizar produtos no Grid Principal
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+
+            grid.innerHTML = items.map(p => {
+                const whatsappMsg = encodeURIComponent(`Olá! Tenho interesse no presente: "${p.title}". Gostaria de saber valores e disponibilidade!`);
+                const categoryLabel = categoryInfo[p.category] ? categoryInfo[p.category].name : p.category;
+
+                return `
+                    <div class="bg-white rounded-2xl border border-rose-100/80 shadow-xs overflow-hidden flex flex-col hover:shadow-md transition-all group relative">
+                        <!-- Botão de Edição Rápida no Card -->
+                        <button onclick="openEditFormForId(${p.id})" 
+                                class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 hover:bg-rose-600 hover:text-white text-gray-700 shadow-md flex items-center justify-center text-xs transition-colors"
+                                title="Editar Legenda / Foto">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <div class="relative aspect-square bg-rose-50 overflow-hidden">
+                            <img src="${p.image}" 
+                                 alt="${p.title}" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x600/fecdd3/9f1239?text=Evelyn%27s+Gifts';" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2 left-2 bg-white/90 backdrop-blur-xs text-[9px] font-bold text-rose-700 px-2 py-0.5 rounded-full shadow-xs border border-rose-100">
+                                ${categoryLabel}
+                            </span>
+                        </div>
+                        
+                        <div class="p-3 flex flex-col flex-1">
+                            <h3 class="font-serif font-bold text-xs text-gray-900 leading-snug line-clamp-2 mb-1">
+                                ${p.title}
+                            </h3>
+                            <!-- LEGENDA / DESCRIÇÃO -->
+                            <p class="text-[11px] text-gray-500 line-clamp-3 mb-2 leading-relaxed">
+                                ${p.desc}
+                            </p>
+                            
+                            <div class="mt-auto pt-2 border-t border-rose-50 flex flex-col gap-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md">
+                                        ${p.price}
+                                    </span>
+                                    <button onclick="openEditFormForId(${p.id})" class="text-[10px] text-gray-400 hover:text-rose-600 font-medium underline">
+                                        Editar Legenda
+                                    </button>
+                                </div>
+                                <a href="https://wa.me/${phone}?text=${whatsappMsg}" 
+                                   target="_blank" 
+                                   class="w-full bg-whatsapp hover:bg-whatsapp-dark text-white text-[11px] font-bold py-1.5 px-2 rounded-xl flex items-center justify-center gap-1.5 shadow-xs transition-transform active:scale-95">
+                                    <i class="fa-brands fa-whatsapp text-xs"></i>
+                                    <span>Pedir no Zap</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Alternar visibilidade do Modal de Filtro
+        function toggleFilterModal() {
+            const modal = document.getElementById('filterModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                renderModalCategories();
+            }
+        }
+
+        function renderModalCategories() {
+            const container = document.getElementById('filterModalCategories');
+            const categoriesKeys = Object.keys(categoryInfo);
+
+            container.innerHTML = categoriesKeys.map(catKey => {
+                const count = catKey === 'all' 
+                    ? products.length 
+                    : products.filter(p => p.category === catKey).length;
+
+                const isSelected = currentCategory === catKey;
+                const activeClasses = isSelected 
+                    ? 'bg-rose-600 text-white font-bold shadow-xs' 
+                    : 'bg-white text-gray-700 border border-gray-200 hover:bg-rose-50';
+
+                return `
+                    <button onclick="selectCategoryFromModal('${catKey}')" 
+                            class="w-full p-2.5 rounded-xl text-left flex items-center justify-between transition-all ${activeClasses}">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid ${categoryInfo[catKey].icon} text-sm ${isSelected ? 'text-white' : 'text-rose-500'}"></i>
+                            <span>${categoryInfo[catKey].name}</span>
+                        </div>
+                        <span class="text-[11px] px-2 py-0.5 rounded-full ${isSelected ? 'bg-white/20 text-white' : 'bg-rose-100 text-rose-700'} font-semibold">
+                            ${count} ${count === 1 ? 'item' : 'itens'}
+                        </span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectCategoryFromModal(catKey) {
+            currentCategory = catKey;
+            
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                const isTarget = btn.getAttribute('data-cat') === catKey;
+                if (isTarget) {
+                    btn.classList.remove('bg-gray-100', 'text-gray-600');
+                    btn.classList.add('bg-rose-600', 'text-white', 'shadow-xs');
+                } else {
+                    btn.classList.remove('bg-rose-600', 'text-white', 'shadow-xs');
+                    btn.classList.add('bg-gray-100', 'text-gray-600');
+                }
+            });
+
+            renderModalCategories();
+            filterProducts();
+        }
+
+        function setSortOption(sortKey) {
+            currentSort = sortKey;
+            
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.className = 'sort-btn p-2.5 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 text-left flex items-center justify-between';
+                const icon = btn.querySelector('i');
+                if(icon) icon.className = 'fa-solid fa-circle-check text-gray-300';
+            });
+
+            const activeBtn = document.getElementById(`sort-${sortKey}`);
+            if (activeBtn) {
+                activeBtn.className = 'sort-btn p-2.5 rounded-xl border border-rose-200 text-rose-700 bg-rose-50 font-semibold text-left flex items-center justify-between';
+                const icon = activeBtn.querySelector('i');
+                if(icon) icon.className = 'fa-solid fa-circle-check text-rose-600';
+            }
+
+            filterProducts();
+        }
+
+        function updateCategoryCounts() {
+            Object.keys(categoryInfo).forEach(catKey => {
+                const countEl = document.getElementById(`count-${catKey}`);
+                if (countEl) {
+                    const cnt = catKey === 'all' 
+                        ? products.length 
+                        : products.filter(p => p.category === catKey).length;
+                    countEl.textContent = `(${cnt})`;
+                }
+            });
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            let filtered = products.filter(p => {
+                const matchesCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchesSearch = p.title.toLowerCase().includes(query) || 
+                                      p.desc.toLowerCase().includes(query);
+                return matchesCat && matchesSearch;
+            });
+
+            if (currentSort === 'az') {
+                filtered.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (currentSort === 'za') {
+                filtered.sort((a, b) => b.title.localeCompare(a.title));
+            } else {
+                filtered.sort((a, b) => a.id - b.id);
+            }
+
+            const filterBadge = document.getElementById('activeFilterBadge');
+            if (currentCategory !== 'all' || currentSort !== 'default' || query !== '') {
+                filterBadge.classList.remove('hidden');
+            } else {
+                filterBadge.classList.add('hidden');
+            }
+
+            renderProducts(filtered);
+        }
+
+        function setCategory(cat, btnElement) {
+            currentCategory = cat;
+            
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-rose-600', 'text-white', 'shadow-xs');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+
+            btnElement.classList.remove('bg-gray-100', 'text-gray-600');
+            btnElement.classList.add('bg-rose-600', 'text-white', 'shadow-xs');
+
+            filterProducts();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            currentCategory = 'all';
+            currentSort = 'default';
+            
+            setSortOption('default');
+            
+            const firstBtn = document.querySelector('.cat-btn[data-cat="all"]');
+            if (firstBtn) setCategory('all', firstBtn);
+
+            const modal = document.getElementById('filterModal');
+            if (!modal.classList.contains('hidden')) {
+                toggleFilterModal();
+            }
+        }
+
+        // FUNÇÕES DO GERENCIADOR DE LEGENDA E CONTEÚDO
+        function toggleEditModal() {
+            const modal = document.getElementById('editModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                closeEditForm();
+                renderEditProductList();
+            }
+        }
+
+        function renderEditProductList() {
+            const container = document.getElementById('editProductList');
+            container.innerHTML = products.map(p => `
+                <div class="bg-gray-50 p-2.5 rounded-xl border border-gray-200 flex items-center gap-3 hover:border-rose-300 transition-colors">
+                    <img src="${p.image}" class="w-12 h-12 object-cover rounded-lg bg-gray-200 shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-xs font-bold text-gray-800 truncate">${p.title}</p>
+                        <p class="text-[10px] text-gray-500 line-clamp-1 italic">${p.desc}</p>
+                        <span class="text-[10px] text-rose-600 font-semibold">${p.price}</span>
+                    </div>
+                    <button onclick="openEditFormForId(${p.id})" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold px-2.5 py-1.5 rounded-lg shrink-0 flex items-center gap-1">
+                        <i class="fa-solid fa-pen"></i> Editar
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function openEditFormForId(productId) {
+            const modal = document.getElementById('editModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            }
+
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+
+            document.getElementById('editProdId').value = prod.id;
+            document.getElementById('editProdTitle').value = prod.title;
+            document.getElementById('editProdDesc').value = prod.desc;
+            document.getElementById('editProdPrice').value = prod.price;
+            document.getElementById('editProdCategory').value = prod.category;
+            document.getElementById('editProdImage').value = prod.image.startsWith('data:') ? '' : prod.image;
+            document.getElementById('editProdPreview').src = prod.image;
+
+            document.getElementById('editProductList').classList.add('hidden');
+            document.getElementById('editFormContainer').classList.remove('hidden');
+        }
+
+        function closeEditForm() {
+            document.getElementById('editProductList').classList.remove('hidden');
+            document.getElementById('editFormContainer').classList.add('hidden');
+        }
+
+        function previewUploadedImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('editProdPreview').src = e.target.result;
+                    document.getElementById('editProdImage').value = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function saveProductChanges(event) {
+            event.preventDefault();
+            const id = parseInt(document.getElementById('editProdId').value);
+            const prod = products.find(p => p.id === id);
+
+            if (prod) {
+                prod.title = document.getElementById('editProdTitle').value.trim();
+                prod.desc = document.getElementById('editProdDesc').value.trim();
+                prod.price = document.getElementById('editProdPrice').value.trim();
+                prod.category = document.getElementById('editProdCategory').value;
+                
+                const imgVal = document.getElementById('editProdImage').value.trim();
+                if (imgVal) {
+                    prod.image = imgVal;
+                } else if (document.getElementById('editProdPreview').src) {
+                    prod.image = document.getElementById('editProdPreview').src;
+                }
+
+                saveProductsToStorage();
+                updateCategoryCounts();
+                filterProducts();
+                closeEditForm();
+                renderEditProductList();
+            }
+        }
+
+        function resetAllProducts() {
+            localStorage.removeItem('evelyns_custom_products_v2');
+            products = JSON.parse(JSON.stringify(defaultProducts));
+            updateCategoryCounts();
+            filterProducts();
+            closeEditForm();
+            renderEditProductList();
+        }
+
+        // Carregamento Inicial
+        window.onload = function() {
+            loadProducts();
+            updateCategoryCounts();
+            filterProducts();
+        };
+    </script>
+</body>
+</html>
